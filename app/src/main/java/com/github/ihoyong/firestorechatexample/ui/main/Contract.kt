@@ -15,5 +15,7 @@ interface Contract {
         fun attachView(view: View, context: Context)
 
         fun getChatMessage()
+
+        fun sendMessage(message: String, callback: (String) -> Unit)
     }
 }
