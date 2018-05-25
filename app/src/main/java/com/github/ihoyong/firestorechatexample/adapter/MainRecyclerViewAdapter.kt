@@ -27,10 +27,12 @@ class MainRecyclerViewAdapter(val context: Context) : RecyclerView.Adapter<Recyc
         (holder as MainActivityViewHolder).bind(item[position].message)
     }
 
+    // 아이템 추가
     override fun addItem(e: chatItem) {
         item.add(e)
     }
 
+    // 뷰 갱신
     override fun changeView() {
         notifyDataSetChanged()
     }
