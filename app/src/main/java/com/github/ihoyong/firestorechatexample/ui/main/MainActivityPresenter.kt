@@ -24,6 +24,7 @@ class MainActivityPresenter : Contract.Presenter, EventListener<QuerySnapshot> {
         this.view = view
         this.context = context
 
+        // 파이어스토어 연결
         firestore = FirebaseFirestore.getInstance()
     }
 
@@ -40,7 +41,7 @@ class MainActivityPresenter : Contract.Presenter, EventListener<QuerySnapshot> {
             adapter = mAdapter
         }
 
-        // firestore 연결
+        // firestore에서 데이터 불러오기
         firestore.collection("Chat")
                 .orderBy("time")
                 .addSnapshotListener(this)
