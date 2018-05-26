@@ -1,17 +1,16 @@
-package com.github.ihoyong.firestorechatexample.ui.login
+package com.github.ihoyong.firestorechatexample.ui.register
 
 import com.github.ihoyong.firestorechatexample.R
 import com.github.ihoyong.firestorechatexample.base.BaseActivity
 
-class LoginActivity : BaseActivity() {
+class RegisterActivity : BaseActivity() {
 
-    private lateinit var presenter: LoginPresenter
+    private lateinit var presenter: RegisterPresenter
 
-    override fun getResID(): Int = R.layout.activity_login
-
+    override fun getResID(): Int = R.layout.activity_register
 
     override fun init() {
-        presenter = LoginPresenter()
+        presenter = RegisterPresenter()
     }
 
     override fun resume() {
