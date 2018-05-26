@@ -7,6 +7,10 @@ interface Contract{
     }
 
     interface Presenter{
+        fun attachView(view: View)
+        fun deathView()
 
+        // Login
+        fun submit(id: String, pw: String)
     }
 }
