@@ -7,4 +7,57 @@
     android:background="#FFFFFF"
     tools:context=".ui.register.RegisterActivity">
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/register_id_layer"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.286">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/register_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="id"
+            android:inputType="textEmailAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/register_pw_layer"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.503">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/register_pw"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="pw"
+            android:minEms="6" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/register_submit"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:text="Submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.803" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
