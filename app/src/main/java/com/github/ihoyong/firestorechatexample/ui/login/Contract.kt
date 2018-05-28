@@ -11,6 +11,6 @@ interface Contract{
         fun deathView()
 
         // Login
-        fun submit(id: String, pw: String)
+        fun submit(id: String, pw: String, callback: (Boolean) -> Unit)
     }
 }
