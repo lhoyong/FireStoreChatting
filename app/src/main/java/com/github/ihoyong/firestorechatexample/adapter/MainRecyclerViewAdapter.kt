@@ -9,13 +9,9 @@ import com.github.ihoyong.firestorechatexample.model.chatItem
 import com.github.ihoyong.firestorechatexample.ui.viewholder.MainActivityViewHolder
 
 
-class MainRecyclerViewAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), Contract.Model, Contract.View {
+class MainRecyclerViewAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), Contract.Model, Contract.View {
 
-    private var item: MutableList<chatItem>
-
-    init {
-        item = ArrayList()
-    }
+    private var item: MutableList<chatItem> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return MainActivityViewHolder(LayoutInflater.from(context).inflate(R.layout.main_item, parent, false))

@@ -7,15 +7,17 @@ interface Contract {
 
     interface View {
 
-        fun recyclerview(): RecyclerView
+        fun chatRecyclerview(): RecyclerView
+        fun chatMessageClear()
     }
 
     interface Presenter {
 
-        fun attachView(view: View, context: Context)
+        fun attachView(view: View)
+        fun attachRecyclerView(mContext: Context)
 
         fun getChatMessage()
 
-        fun sendMessage(message: String, callback: (String) -> Unit)
+        fun sendMessage(message: String)
     }
 }

@@ -23,18 +23,14 @@ class LoginActivity : BaseActivity(), Contract.View {
         login_pw.setText("000000")
 
         // Register Button
-        login_register.setOnClickListener {
-            startActivity(intentFor<RegisterActivity>())
-        }
+        login_register.setOnClickListener { startActivity(intentFor<RegisterActivity>()) }
 
         // 로그인 버튼
         login_submit.setOnClickListener {
             presenter.submit(login_id.text.toString(), login_pw.text.toString()) {
                 if (it) {
-                    startActivity(intentFor<MainActivity>())
-                    finish()
+                    startActivity(intentFor<MainActivity>()).apply{finish()}
                 }
-
             }
         }
     }
