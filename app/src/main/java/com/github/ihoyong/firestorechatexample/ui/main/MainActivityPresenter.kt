@@ -10,9 +10,7 @@ import java.util.*
 
 class MainActivityPresenter : Contract.Presenter, EventListener<QuerySnapshot> {
 
-
     private lateinit var view: Contract.View
-    private lateinit var context: Context
 
     private lateinit var firestore: FirebaseFirestore
 
@@ -20,9 +18,8 @@ class MainActivityPresenter : Contract.Presenter, EventListener<QuerySnapshot> {
     private lateinit var adapterModel: com.github.ihoyong.firestorechatexample.adapter.Contract.Model
     private lateinit var adapterView: com.github.ihoyong.firestorechatexample.adapter.Contract.View
 
-    override fun attachView(view: Contract.View, context: Context) {
+    override fun attachView(view: Contract.View) {
         this.view = view
-        this.context = context
 
         // 파이어스토어 연결
         firestore = FirebaseFirestore.getInstance()
@@ -31,20 +28,25 @@ class MainActivityPresenter : Contract.Presenter, EventListener<QuerySnapshot> {
         //hidekeyboard.hideKeyboard()
     }
 
-    override fun getChatMessage() {
-        //TODO 채팅 내역 받기
+    // Recyclerview
+    override fun attachRecyclerView(mContext: Context) {
 
-        mAdapter = MainRecyclerViewAdapter(context)
+        mAdapter = MainRecyclerViewAdapter(mContext)
         adapterModel = mAdapter
         adapterView = mAdapter
 
-        // Recyclerview 세팅
-        view.recyclerview().apply {
+
+        view.chatRecyclerview().apply {
             layoutManager = LinearLayoutManager(context)
             adapter = mAdapter
+            setHasFixedSize(true)
         }
+    }
 
-        // firestore에서 데이터 불러오기
+    // firestore에서 데이터 불러오기  get Message From FireStore
+    //TODO 채팅 내역 받기
+    override fun getChatMessage() {
+
         firestore.collection("Chat")
                 .orderBy("time")
                 .addSnapshotListener(this)
@@ -58,7 +60,7 @@ class MainActivityPresenter : Contract.Presenter, EventListener<QuerySnapshot> {
                     val item = docu.document.toObject(chatItem::class.java)
                     adapterModel.addItem(item)
                     adapterView.changeView()
-                    view.recyclerview().scrollToPosition(mAdapter.itemCount - 1)
+                    view.chatRecyclerview().scrollToPosition(mAdapter.itemCount - 1)
                 }
 
                 else -> {
@@ -67,20 +69,19 @@ class MainActivityPresenter : Contract.Presenter, EventListener<QuerySnapshot> {
         }
     }
 
-    // 메시지 보내기
-    override fun sendMessage(message: String, callback: (String) -> Unit) {
-        if (message.isEmpty()) callback("empty")    // 값이 없을 경우
-        else {
+    // 메시지 보내기 Send Message
+    override fun sendMessage(message: String) {
+        if (message.isNotEmpty()) {
             firestore.collection("Chat")
                     .add(chatItem(message, Date().time))
                     .addOnSuccessListener {
-                        // 성공일 경우
-                        callback("success")
+                        view.chatMessageClear()
                     }
                     .addOnFailureListener {
-                        // 실패일경우
-                        callback("fail")
+
+
                     }
         }
     }
+
 }
