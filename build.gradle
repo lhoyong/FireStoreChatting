@@ -3,7 +3,7 @@
 buildscript {
 
     ext{
-        kotlin_version = '1.2.41'
+        kotlin_version = '1.2.50'
         anko_version='0.10.5'
         dagger_version = '2.16'
         rx_android_version = '2.0.2'
