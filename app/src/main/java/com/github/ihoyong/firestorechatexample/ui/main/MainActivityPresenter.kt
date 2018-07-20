@@ -26,6 +26,9 @@ class MainActivityPresenter : Contract.Presenter, EventListener<QuerySnapshot> {
 
         // 파이어스토어 연결
         firestore = FirebaseFirestore.getInstance()
+
+        // 키보드 내리기
+        //hidekeyboard.hideKeyboard()
     }
 
     override fun getChatMessage() {
